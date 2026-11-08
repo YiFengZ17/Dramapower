@@ -1,0 +1,17 @@
+{
+  "file": "images/S02_first_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "ff502a999c1431eaabf012498c4727ea58fdc5f846c055593e745ca31e5ee133",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-2467f1da-9b97-48c0-8172-60774c3d03ec.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/S02_first_v2.txt",
+  "prompt_sha256": "8b79e17929554a8a223b41afb889ed3667d94eba05205a01f105b4a7bf8865c7",
+  "refs": [
+    "film01/images/CHAR_fish_sheet_v1.png",
+    "film01/refs/REF_scene_study_v1.png",
+    "film01/images/STYLE_a_v1_16x9.png"
+  ],
+  "job": "JOB-0005",
+  "collected_at": "2026-11-08T21:33:41+08:00"
+}

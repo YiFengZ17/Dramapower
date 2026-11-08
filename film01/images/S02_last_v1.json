@@ -1,0 +1,15 @@
+{
+  "file": "images/S02_last_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "54e474519474dd350b0004584fb8962e9e78c24b7b49ad3d54bb150ba692b5b0",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-80d9724b-576a-4e60-bc76-b28409e8fa76.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/S02_last_v2.txt",
+  "prompt_sha256": "d5599c0b2e53a2e8e620abdae8773c0835c064de7e488e6fa2060f2b550ae7ca",
+  "refs": [
+    "film01/images/S02_first_v1.png"
+  ],
+  "job": "JOB-0005",
+  "collected_at": "2026-11-08T21:35:00+08:00"
+}

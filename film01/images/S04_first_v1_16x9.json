@@ -1,0 +1,15 @@
+{
+  "file": "images/S04_first_v1_16x9.png",
+  "from": "images/S04_first_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "f38fa9b1051bc51ce7d871035f3b278bb2aaca83bf3d9ce483ee4bdf5df3439f",
+  "made_at": "2026-11-08T21:44:56+08:00"
+}

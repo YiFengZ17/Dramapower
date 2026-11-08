@@ -1,0 +1,15 @@
+{
+  "file": "images/S02_last_v1_16x9.png",
+  "from": "images/S02_last_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "58923a7ae360f8bd942c240d609ee516f0086968c1c3eaa46635895927c95799",
+  "made_at": "2026-11-08T21:44:55+08:00"
+}
