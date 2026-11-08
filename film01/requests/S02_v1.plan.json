@@ -1,0 +1,52 @@
+{
+  "clip": "S02_v1",
+  "payload_sha256": "f447c69b03bb0ecb0b54daea186d2bcdb433845ccee51a0fc97c46689199bf11",
+  "estimate_cny": 0.9,
+  "estimate_tokens": 38880,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 163,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S02_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "15bd48e3b12da8a3eab9a5b885918bdebe9d0eb424e949172f5f1491cd42a23e"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S02_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "58923a7ae360f8bd942c240d609ee516f0086968c1c3eaa46635895927c95799"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位，透过门缝看。少女用大勺子舀起一大勺白米饭塞进嘴里，腮帮子一下子鼓起来像仓鼠，开心地眯起眼睛咀嚼，脸上粘着饭粒，脸颊泛红；尾巴开心地上下摆动。另一只手放在键盘上假装敲打。动作可爱、有弹性，节奏轻快。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S02_first_v1_16x9.png sha256=15bd48e3b12d>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S02_last_v1_16x9.png sha256=58923a7ae360>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T14:03:23+00:00"
+}

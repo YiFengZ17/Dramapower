@@ -1,0 +1,52 @@
+{
+  "clip": "S01_v1",
+  "payload_sha256": "cdf95ee15b9a0f359cd8c85691b06bc1492362222746b3d670291036273a9dd0",
+  "estimate_cny": 0.9,
+  "estimate_tokens": 38880,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 172,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S01_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "fd71cf5078907ba096dd2f3c4f4288578fc260950cc02467e2be61d65ca26168"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S01_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "0a5e63ddfd3f0412bab247b0925d30f547a51cf2da8763b8a62934c524a28e19"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "镜头从昏暗的走廊透过门缝，缓慢平稳地向前推近。门缝里，Q版鲸鱼女仆少女坐在大黑转椅上，背对镜头面向发光的显示器，面前桌上放着巨大的饭碗。她的头轻轻晃动，像在专心看屏幕，尾巴在椅子边轻轻摆动。只有镜头推进，房间和人物都不变形。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S01_first_v1_16x9.png sha256=fd71cf507890>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S01_last_v1_16x9.png sha256=0a5e63ddfd3f>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T14:03:23+00:00"
+}

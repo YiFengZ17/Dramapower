@@ -1,0 +1,52 @@
+{
+  "clip": "S06_v1",
+  "payload_sha256": "6c23ad77718c03d9ad6ac41c2254c96da305d6be95b777c342bf76233b772458",
+  "estimate_cny": 0.9,
+  "estimate_tokens": 38880,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 170,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S06_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "d6079686fd1de31e71e9e3133a3389fe475934147bcefaf6ecec679ad9c1e7aa"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S06_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "e8c093aa5fc6e9db0b5bb9bf2c55b92208e630a1b5248cbd973e01064a029996"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "低机位固定镜头，贴着地面。巨大的饭碗倒扣在木地板上，把少女整个盖住，完全看不见她，只有鲸鱼尾巴从碗沿下面伸出来。尾巴先用力扑腾两下，然后软软地垂到地上，一粒米饭轻轻落在尾鳍上。旁边侧翻的转椅，轮子慢慢空转；米粒散落一地。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S06_first_v1_16x9.png sha256=d6079686fd1d>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S06_last_v1_16x9.png sha256=e8c093aa5fc6>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T14:03:24+00:00"
+}
