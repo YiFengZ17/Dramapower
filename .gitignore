@@ -1,0 +1,12 @@
+# 成品和所有视频只留在本地，不上传
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.part
+film01/video/
+# 密钥
+.env
+*.env
+# Python
+__pycache__/
