@@ -174,7 +174,7 @@ def build(spec_path):
         die(f"请求体 {len(body) / 1e6:.1f}MB，接近或超过 64MB 上限")
     sha = hashlib.sha256(body).hexdigest()
     ow, oh = prices["output_size_16x9"][res]
-    tokens = ow * oh * prices["fps"] * dur / 1024
+    tokens = ow * oh * (prices["fps"] * dur + 1) / 1024  # 帧数 = 时长×帧率+1（S01_v1 实测校准）
 
     preview = json.loads(json.dumps(payload))
     for item, info in zip(preview["content"][1:], images_info):

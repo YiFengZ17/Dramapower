@@ -1,0 +1,16 @@
+{
+  "name": "T01_rough_v1",
+  "_note": "粗剪初稿。尺寸改为 Seedance 480p 的实际输出 864×496，所有镜头统一到这个尺寸。入点和出点是看到真实片段前的估计，导演看过抽帧、用户看过动态后再细剪。",
+  "size": [864, 496],
+  "fps": 24,
+  "fade_in": 0.3,
+  "fade_out": 0.5,
+  "segments": [
+    {"shot": "S01", "src": "video/S01_v1.mp4", "in": 1.0, "out": 3.5},
+    {"shot": "S02", "src": "video/S02_v3.mp4", "in": 0.5, "out": 3.5},
+    {"shot": "S03", "src": "video/S03_insert_v1.mp4", "in": 0.3, "out": 2.8},
+    {"shot": "S04", "src": "video/S04_v3.mp4", "in": 1.5, "out": 3.5},
+    {"shot": "S05", "src": "video/S05_v3.mp4", "in": 1.2, "out": 4.2},
+    {"shot": "S06", "src": "video/S06_v1.mp4", "in": 0.8, "out": 3.3}
+  ]
+}

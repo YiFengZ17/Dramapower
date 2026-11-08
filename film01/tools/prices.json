@@ -1,17 +1,38 @@
 {
   "_note": "只有导演能改这个文件。单价来自 JOB-0002 核对的官方刊例价（元/百万 token，输入不含视频），实际以火山方舟账单为准。",
-  "_token_formula": "tokens ≈ 宽 × 高 × 帧率 × 时长 / 1024。按这个公式算 720p，2.5 约 ¥1.51/秒、mini 约 ¥0.50/秒，与用户给出的单价吻合。第一条真实任务完成后，用返回的 usage 校准。",
+  "_token_formula": "tokens = 宽 × 高 × (时长 × 帧率 + 1) / 1024。已用 S01_v1 的真实 usage 校准：864×496×97/1024 = 40594，和接口返回值完全一致。",
   "fps": 24,
-  "output_size_16x9": {"480p": [864, 480], "720p": [1280, 720], "1080p": [1920, 1080]},
+  "output_size_16x9": {
+    "480p": [
+      864,
+      496
+    ],
+    "720p": [
+      1280,
+      720
+    ],
+    "1080p": [
+      1920,
+      1080
+    ]
+  },
   "models": {
     "doubao-seedance-2-5-260628": {
-      "cny_per_million_tokens": {"480p": 70, "720p": 70, "1080p": 77},
+      "cny_per_million_tokens": {
+        "480p": 70,
+        "720p": 70,
+        "1080p": 77
+      },
       "max_duration": 30,
       "first_last_frame_ratio": "adaptive"
     },
     "doubao-seedance-2-0-mini-260615": {
-      "cny_per_million_tokens": {"480p": 23, "720p": 23},
+      "cny_per_million_tokens": {
+        "480p": 23,
+        "720p": 23
+      },
       "max_duration": 15
     }
-  }
+  },
+  "_output_size_note": "480p 的实际输出尺寸是 864×496（S01_v1 实测）。720p 和 1080p 还没实测"
 }
