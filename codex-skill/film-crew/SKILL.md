@@ -17,7 +17,7 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 
 - 仓库根目录（下文用 `<repo>` 表示）就是用户在 WSL 里 clone 的 Dramapower。
 - 项目文件夹是 `<repo>/film01/`。所有路径都相对于它，除非另行写明。
-- 工作分支：工单里写了就用工单里的；没写就用 `claude/bold-edison-8mephk`。
+- 工作分支：**只用 `main`**。不建分支，不切换分支。
 
 | 目录 | 谁写 | 内容 |
 |---|---|---|
@@ -35,7 +35,7 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 ## 每次开工
 
 1. `cd <repo> && git status`。工作区不干净就停下，告诉用户哪些文件有改动，不要自己清理。
-2. `git pull --ff-only`。失败就停下报告，不要 merge、rebase 或强推。
+2. `git checkout main && git pull --ff-only origin main`。失败就停下报告，不要 merge 或强推。
 3. 找待办工单：`jobs/` 里那些在 `reports/` 下还没有同名报告的 `JOB-xxxx.md`。按编号从小到大执行。用户点名了某张工单就只做那张。
 4. 每张工单都从头到尾读完再动手。工单里有你不理解的地方、文件缺失、或者指令和本 skill 冲突，就不要猜：写一份状态为“阻塞”的报告，说明原因。
 
@@ -107,7 +107,7 @@ mp4 只会落在 `video/`，它已被 `.gitignore` 忽略。要提交的是 `vid
 - 不碰 `approvals/`，不删除 `STOP_BILLING`。
 - 不修改 `jobs/` `prompts/` `shots/` `tools/` 下的任何文件。发现脚本有 bug，写进报告，交给导演修。
 - 不充值，不买额度，不登录控制台改设置。
-- 不 `git push --force`，不改历史，不切换到其他分支提交。
+- 不 `git push --force`，不改历史，不建分支，只往 `main` 提交。
 - 不自作主张多做工单之外的事。
 
 ## 写报告：`reports/JOB-xxxx.md`
@@ -139,8 +139,16 @@ git add film01/reports film01/images film01/requests film01/logs film01/video_ch
 git status --short           # 检查一遍：不应该出现 mp4、.env 或其他视频文件
 git diff --cached --name-only | grep -Ei '\.(mp4|mov|mkv|webm)$|\.env' && echo "有不该提交的文件，停止"
 git commit -m "JOB-xxxx: <一句话说明>"
-git push
+git push origin main
 ```
-只 add 上面这几个目录。`push` 失败就重试最多 3 次（间隔 5 秒、10 秒、20 秒），仍然失败就告诉用户。
+只 add 上面这几个目录。
+
+`push` 被拒、提示远端有新提交（导演可能同时推了新工单）时：
+```bash
+git pull --rebase origin main
+git push origin main
+```
+rebase 出现冲突就运行 `git rebase --abort`，停下来告诉用户，不要自己解决冲突。
+网络错误导致失败的，最多重试 3 次（间隔 5 秒、10 秒、20 秒），仍然失败就告诉用户。
 
 最后用三五行告诉用户：做了哪几张工单、每张的状态、有没有需要用户做的事（比如“请运行 `python film01/tools/approve.py S03_v1` 批准花钱”）、是否已推送。

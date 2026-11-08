@@ -1,6 +1,6 @@
 # JOB-xxxx
 类型: image | video_plan | video_submit | video_fetch | post | check
-分支: claude/bold-edison-8mephk
+分支: main
 目的: 一句话
 
 ## 任务
