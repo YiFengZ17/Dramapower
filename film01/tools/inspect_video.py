@@ -63,7 +63,7 @@ def main():
         sys.exit(f"视频不存在: {video}")
     out = ROOT / "video_check" / a.clip
     if out.exists():
-        sys.exit(f"{out.relative_to(ROOT)} 已存在，不覆盖。要重抽就换一个 clip 名或用 --video 另起。")
+        sys.exit(f"{out.relative_to(ROOT).as_posix()} 已存在，不覆盖。要重抽就换一个 clip 名或用 --video 另起。")
     probe = json.loads(run(["ffprobe", "-v", "error", "-count_frames", "-show_format", "-show_streams",
                             "-of", "json", str(video)]))
     final = out
@@ -145,7 +145,7 @@ def main():
     (out / "summary.md").write_text("\n".join(md), encoding="utf-8")
     out.rename(final)
     print("\n".join(md))
-    print(f"\n已写入 {final.relative_to(ROOT)}/")
+    print(f"\n已写入 {final.relative_to(ROOT).as_posix()}/")
 
 
 if __name__ == "__main__":

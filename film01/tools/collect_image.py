@@ -100,13 +100,13 @@ def main():
         w, h = im.size
     raw = dst.read_bytes()
     meta = {
-        "file": str(dst.relative_to(ROOT)),
+        "file": dst.relative_to(ROOT).as_posix(),
         "version": n,
         "size": f"{w}x{h}",
         "sha256": hashlib.sha256(raw).hexdigest(),
-        "source": (str(src.relative_to(gen.parent)) if src.is_relative_to(gen.parent) else src.name),
+        "source": (src.relative_to(gen.parent).as_posix() if src.is_relative_to(gen.parent) else src.name),
         "codex_session_dir": src.parent.name,
-        "prompt_file": str(prompt_p.relative_to(ROOT)),
+        "prompt_file": prompt_p.relative_to(ROOT).as_posix(),
         "prompt_sha256": hashlib.sha256(prompt_p.read_bytes()).hexdigest(),
         "refs": a.refs,
         "job": a.job,

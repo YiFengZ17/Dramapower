@@ -201,7 +201,7 @@ def main():
     if not any(p.exists() for p in stills):
         for p, t in zip(stills, (0.0, a.duration / 2, a.duration - 1 / a.fps)):
             frame(t, a.duration, fonts).save(p)
-            print(f"静帧 {p.relative_to(ROOT)}")
+            print(f"静帧 {p.relative_to(ROOT).as_posix()}")
     else:
         print("静帧已存在，跳过")
     if a.stills_only:
@@ -209,7 +209,7 @@ def main():
 
     out = ROOT / "video" / f"{name}.mp4"
     if out.exists():
-        sys.exit(f"{out.relative_to(ROOT)} 已存在，不覆盖。要改就用 --version 开新版本。")
+        sys.exit(f"{out.relative_to(ROOT).as_posix()} 已存在，不覆盖。要改就用 --version 开新版本。")
     out.parent.mkdir(exist_ok=True)
     n = round(a.duration * a.fps)
     ff = subprocess.Popen(["ffmpeg", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
@@ -220,7 +220,7 @@ def main():
     ff.stdin.close()
     if ff.wait() != 0:
         sys.exit("ffmpeg 失败")
-    print(f"已生成 {out.relative_to(ROOT)}（{n} 帧，{a.duration}s，{a.fps}fps，只在本地，不提交）")
+    print(f"已生成 {out.relative_to(ROOT).as_posix()}（{n} 帧，{a.duration}s，{a.fps}fps，只在本地，不提交）")
 
 
 if __name__ == "__main__":

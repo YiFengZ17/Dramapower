@@ -34,8 +34,10 @@ ROOT = Path(__file__).resolve().parent.parent  # film01/
 BASE = os.environ.get("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3").rstrip("/")
 TASKS = BASE + "/contents/generations/tasks"
 STOP = ROOT / "STOP_BILLING"
-BILLING_WORDS = ("overdue", "arrear", "balance", "insufficient", "quota", "billing", "payment",
-                 "欠费", "余额", "额度")
+BILLING_CODES = {"AccountOverdueError", "OperationDenied.ServiceOverdue"}
+BILLING_WORDS = ("overdue", "arrear", "insufficient balance", "billing", "payment", "欠费", "余额不足")
+# 限流和排队上限不是欠费（JOB-0002 核对的错误码）：这些情况只停下报告，不写 STOP_BILLING
+LIMIT_CODES = {"QuotaExceeded", "TooManyRequests"}
 TERMINAL = {"succeeded", "failed", "cancelled", "expired"}
 
 
@@ -85,15 +87,17 @@ def check_image(path, ratio):
     if not path.exists():
         die(f"图片不存在: {path}")
     size = path.stat().st_size
-    if size > 10 * 1024 * 1024:
+    if size > 10 * 1024 * 1024:  # 官方上限 30MB，这里更严
         die(f"图片超过 10MB: {path} ({size} 字节)")
     with Image.open(path) as im:
         w, h = im.size
         fmt = (im.format or "").lower()
     if fmt not in ("png", "jpeg", "webp"):
         die(f"图片格式不支持: {path} ({fmt})")
-    if min(w, h) < 300:
-        die(f"图片太小: {path} {w}x{h}")
+    if min(w, h) < 300 or max(w, h) > 6000:
+        die(f"图片尺寸超出官方范围 300–6000px: {path} {w}x{h}")
+    if not 0.4 <= w / h <= 2.5:
+        die(f"图片宽高比超出官方范围 0.4–2.5: {path} {w}x{h}")
     if ratio != "adaptive":
         want = ratio_value(ratio)
         if abs(w / h - want) / want > 0.02:
@@ -115,12 +119,21 @@ def build(spec_path):
             die(f"镜头参数缺少字段: {k}")
     prices = load_prices()
     model, res = spec["model"], spec["resolution"]
-    price = prices.get(model, {}).get(res)
-    if price is None:
-        die(f"prices.json 里没有 {model} / {res} 的单价，无法报价，不提交")
+    m = prices["models"].get(model)
+    if m is None:
+        die(f"prices.json 里没有模型 {model}，无法报价，不提交")
+    rate = m["cny_per_million_tokens"].get(res)
+    if rate is None:
+        die(f"{model} 不支持 {res}，或者 prices.json 里没有它的单价")
     dur = spec["duration"]
-    if not isinstance(dur, int) or not 4 <= dur <= 30:
-        die(f"duration 必须是 4 到 30 之间的整数，现在是 {dur!r}")
+    if not isinstance(dur, int) or not 4 <= dur <= m["max_duration"]:
+        die(f"{model} 的 duration 必须是 4 到 {m['max_duration']} 之间的整数，现在是 {dur!r}")
+    need = m.get("first_last_frame_ratio")
+    if need and spec.get("first_frame") and spec["ratio"] != need:
+        die(f"{model} 做首帧/首尾帧任务时，ratio 只能是 {need}")
+    for k in ("seed", "camera_fixed"):
+        if spec.get(k) is not None:
+            die(f"官方文档没写 {model} 支持 {k}，不传这个字段（JOB-0002）")
 
     prompt = rel(spec["prompt_file"]).read_text(encoding="utf-8-sig").replace("\r\n", "\n").strip()
     if not prompt:
@@ -141,7 +154,7 @@ def build(spec_path):
             "image_url": {"url": f"data:{mime};base64,{base64.b64encode(raw).decode()}"},
             "role": role,
         })
-        images_info.append({"role": role, "file": str(p.relative_to(ROOT)), "size": f"{size[0]}x{size[1]}",
+        images_info.append({"role": role, "file": p.relative_to(ROOT).as_posix(), "size": f"{size[0]}x{size[1]}",
                             "sha256": hashlib.sha256(raw).hexdigest()})
     if len(set(sizes)) > 1:
         die(f"首尾帧尺寸不一致: {sizes}")
@@ -155,13 +168,13 @@ def build(spec_path):
         "generate_audio": bool(spec.get("generate_audio", False)),
         "watermark": bool(spec.get("watermark", False)),
     }
-    if spec.get("seed") is not None:
-        payload["seed"] = int(spec["seed"])
-    if spec.get("camera_fixed") is not None:
-        payload["camera_fixed"] = bool(spec["camera_fixed"])
 
     body = json.dumps(payload, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    if len(body) > 60 * 1024 * 1024:  # 官方上限 64MB
+        die(f"请求体 {len(body) / 1e6:.1f}MB，接近或超过 64MB 上限")
     sha = hashlib.sha256(body).hexdigest()
+    ow, oh = prices["output_size_16x9"][res]
+    tokens = ow * oh * prices["fps"] * dur / 1024
 
     preview = json.loads(json.dumps(payload))
     for item, info in zip(preview["content"][1:], images_info):
@@ -169,9 +182,10 @@ def build(spec_path):
     plan = {
         "clip": clip,
         "payload_sha256": sha,
-        "estimate_cny": round(dur * price, 2),
-        "price_per_sec_cny": price,
-        "price_note": "按 prices.json 估算，实际以火山方舟账单为准",
+        "estimate_cny": round(tokens * rate / 1e6 + 0.005, 2),
+        "estimate_tokens": round(tokens),
+        "cny_per_million_tokens": rate,
+        "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
         "prompt_chars": len(prompt),
         "images": images_info,
         "preview": preview,
@@ -190,17 +204,18 @@ def cmd_plan(a):
     else:
         plan["created"] = now()
         write_new(out, plan)
-        print(f"已写入 {out.relative_to(ROOT)}")
+        print(f"已写入 {out.relative_to(ROOT).as_posix()}")
     p = plan["preview"]
     print(f"clip      : {clip}")
     print(f"model     : {p['model']}")
     print(f"参数      : {p['duration']}s  {p['resolution']}  {p['ratio']}  audio={p['generate_audio']}  "
-          f"watermark={p['watermark']}  seed={p.get('seed')}")
+          f"watermark={p['watermark']}")
     for im in plan["images"]:
         print(f"{im['role']:<11}: {im['file']}  {im['size']}  sha256={im['sha256'][:12]}")
     print(f"提示词    : {plan['prompt_chars']} 字")
     print(f"请求指纹  : {plan['payload_sha256']}")
-    print(f"预估费用  : ¥{plan['estimate_cny']}（{plan['price_per_sec_cny']}/秒，以账单为准）")
+    print(f"预估费用  : ¥{plan['estimate_cny']}（约 {plan['estimate_tokens']} token × "
+          f"¥{plan['cny_per_million_tokens']}/百万，以账单为准）")
 
 
 def api(method, url, body=None):
@@ -229,8 +244,12 @@ def error_of(data):
 
 
 def is_billing(code, msg, http=None):
+    if code in LIMIT_CODES or "ratelimit" in code.lower() or code.endswith("LimitExceeded"):
+        return False
+    if code in BILLING_CODES or http == 402:
+        return True
     s = f"{code} {msg}".lower()
-    return http == 402 or any(w in s for w in BILLING_WORDS)
+    return any(w in s for w in BILLING_WORDS)
 
 
 def stop_billing(clip, http, code, msg):
@@ -246,7 +265,7 @@ def cmd_submit(a):
     clip, body, plan = build(a.spec)
     log = ROOT / "logs" / "api" / f"{clip}.json"
     if log.exists():
-        die(f"{clip} 已经提交过（{log.relative_to(ROOT)}）。重拍要由导演开新版本号。")
+        die(f"{clip} 已经提交过（{log.relative_to(ROOT).as_posix()}）。重拍要由导演开新版本号。")
     pf = ROOT / "requests" / f"{clip}.plan.json"
     if not pf.exists():
         die("没有报价单，请先运行 plan")
@@ -254,7 +273,7 @@ def cmd_submit(a):
         die("当前输入和报价单的指纹不一致，输入被改过，禁止提交")
     af = ROOT / "approvals" / f"{clip}.json"
     if not af.exists():
-        die(f"没有用户批准单 {af.relative_to(ROOT)}，禁止提交")
+        die(f"没有用户批准单 {af.relative_to(ROOT).as_posix()}，禁止提交")
     ap = json.loads(af.read_text(encoding="utf-8-sig"))
     if ap.get("payload_sha256") != plan["payload_sha256"]:
         die("批准单上的指纹和当前请求不一致，禁止提交")
@@ -335,7 +354,7 @@ def cmd_poll(a):
     rec["video_host"] = url.split("/")[2]
     out = ROOT / "video" / f"{a.clip}.mp4"
     if out.exists():
-        print(f"{out.relative_to(ROOT)} 已存在，不重复下载")
+        print(f"{out.relative_to(ROOT).as_posix()} 已存在，不重复下载")
         update_log(log, rec)
         return
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -352,13 +371,13 @@ def cmd_poll(a):
     if chk.returncode != 0 or "video" not in chk.stdout:
         bad = tmp.with_name(f"{a.clip}.download_{int(time.time())}.bad")
         tmp.rename(bad)
-        die(f"下载的文件不是有效视频（{bad.stat().st_size} 字节），已存为 {bad.relative_to(ROOT)}，交给导演。", 2)
+        die(f"下载的文件不是有效视频（{bad.stat().st_size} 字节），已存为 {bad.relative_to(ROOT).as_posix()}，交给导演。", 2)
     tmp.rename(out)
     raw = out.read_bytes()
-    rec["video"] = {"file": str(out.relative_to(ROOT)), "bytes": len(raw),
+    rec["video"] = {"file": out.relative_to(ROOT).as_posix(), "bytes": len(raw),
                     "sha256": hashlib.sha256(raw).hexdigest(), "downloaded_at": now()}
     update_log(log, rec)
-    print(f"已下载 {out.relative_to(ROOT)}（{len(raw) / 1e6:.1f} MB）")
+    print(f"已下载 {out.relative_to(ROOT).as_posix()}（{len(raw) / 1e6:.1f} MB）")
 
 
 def main():

@@ -1,5 +1,17 @@
 {
-  "_note": "单位：元/秒视频。只是估算，实际以火山方舟账单为准。只有导演能改这个文件。",
-  "doubao-seedance-2-5-260628": {"720p": 1.5},
-  "doubao-seedance-2-0-mini-260615": {"720p": 0.5}
+  "_note": "只有导演能改这个文件。单价来自 JOB-0002 核对的官方刊例价（元/百万 token，输入不含视频），实际以火山方舟账单为准。",
+  "_token_formula": "tokens ≈ 宽 × 高 × 帧率 × 时长 / 1024。按这个公式算 720p，2.5 约 ¥1.51/秒、mini 约 ¥0.50/秒，与用户给出的单价吻合。第一条真实任务完成后，用返回的 usage 校准。",
+  "fps": 24,
+  "output_size_16x9": {"480p": [864, 480], "720p": [1280, 720], "1080p": [1920, 1080]},
+  "models": {
+    "doubao-seedance-2-5-260628": {
+      "cny_per_million_tokens": {"480p": 70, "720p": 70, "1080p": 77},
+      "max_duration": 30,
+      "first_last_frame_ratio": "adaptive"
+    },
+    "doubao-seedance-2-0-mini-260615": {
+      "cny_per_million_tokens": {"480p": 23, "720p": 23},
+      "max_duration": 15
+    }
+  }
 }

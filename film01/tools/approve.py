@@ -61,7 +61,7 @@ def main():
                    "approved_at": datetime.now().astimezone().isoformat(timespec="seconds")},
                   f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(f"已写入 {out.relative_to(ROOT.parent)}。请 git add/commit/push，或者让 Codex 执行提交工单。")
+    print(f"已写入 {out.relative_to(ROOT.parent).as_posix()}。请 git add/commit/push，或者让 Codex 执行提交工单。")
 
 
 if __name__ == "__main__":

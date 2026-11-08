@@ -50,7 +50,7 @@ def main():
         sys.exit("这张图已经裁过了")
     dst = src.with_name(f"{src.stem}_{tag}.png")
     if dst.exists():
-        sys.exit(f"{dst.relative_to(ROOT)} 已存在，不覆盖")
+        sys.exit(f"{dst.relative_to(ROOT).as_posix()} 已存在，不覆盖")
 
     with Image.open(src) as im:
         im = im.convert("RGB")
@@ -67,8 +67,8 @@ def main():
         out.save(dst)
 
     meta = {
-        "file": str(dst.relative_to(ROOT)),
-        "from": str(src.relative_to(ROOT)),
+        "file": dst.relative_to(ROOT).as_posix(),
+        "from": src.relative_to(ROOT).as_posix(),
         "from_size": f"{w}x{h}",
         "size": f"{cw}x{ch}",
         "crop_box": [left, top, left + cw, top + ch],
