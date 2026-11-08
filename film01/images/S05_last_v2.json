@@ -1,0 +1,15 @@
+{
+  "file": "images/S05_last_v2.png",
+  "version": 2,
+  "size": "1672x941",
+  "sha256": "b4c2edd564cc098f84e1891b02533492fb5b4f27bb1f0cbdf689b36be7b93211",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-f77a34d6-6c81-4917-b4ab-5f39f837d9cc.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "images/S05_last_user_edit_v2.txt",
+  "prompt_sha256": "b5c3cbd94b21e02d066db04d1f3c06b181e5f27ddcab9836ab9c5c2ce49a4b29",
+  "refs": [
+    "film01/images/S05_last_v1.png"
+  ],
+  "job": "JOB-0005-user-revision",
+  "collected_at": "2026-11-08T21:57:35+08:00"
+}
