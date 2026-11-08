@@ -1,0 +1,12 @@
+{
+  "clip": "S05_v4",
+  "model": "doubao-seedance-2-0-mini-260615",
+  "prompt_file": "prompts/S05_video_v5.txt",
+  "first_frame": "images/S04_last_v1_16x9.png",
+  "last_frame": "images/K4_bowl_head_v1_16x9.png",
+  "duration": 5,
+  "ratio": "16:9",
+  "resolution": "480p",
+  "generate_audio": false,
+  "watermark": false
+}
