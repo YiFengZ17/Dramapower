@@ -1,0 +1,52 @@
+{
+  "clip": "S01_v1",
+  "video_file_local_only": "D:\\Dramapower\\film01\\video\\S01_v1.mp4",
+  "duration_s": 4.041667,
+  "size": "864x496",
+  "fps": 24.0,
+  "frames": 97,
+  "codec": "h264",
+  "has_audio": false,
+  "audio_codec": null,
+  "bytes": 1461634,
+  "sampled_frames": [
+    "f00_n0000.jpg",
+    "f01_n0014.jpg",
+    "f02_n0027.jpg",
+    "f03_n0041.jpg",
+    "f04_n0055.jpg",
+    "f05_n0069.jpg",
+    "f06_n0082.jpg",
+    "f07_n0096.jpg"
+  ],
+  "mean_luma": [
+    54.5,
+    64.4,
+    67.3,
+    71.4,
+    74.5,
+    78.9,
+    81.8,
+    82.4
+  ],
+  "diff_between_samples": [
+    14.2,
+    9.8,
+    11.6,
+    12.3,
+    14.5,
+    14.2,
+    15.7
+  ],
+  "match_with_keyframes": {
+    "first_frame": {
+      "file": "images/S01_first_v1_16x9.png",
+      "mean_abs_diff": 4.7
+    },
+    "last_frame": {
+      "file": "images/S01_last_v1_16x9.png",
+      "mean_abs_diff": 6.5
+    }
+  },
+  "note": "mean_abs_diff 范围 0–255，越小越接近原图；只是粗略指标，导演还要看图。"
+}
