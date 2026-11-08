@@ -23,6 +23,13 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
+# Windows 控制台或管道可能是 GBK 编码：遇到无法显示的字符就替换，不让脚本崩溃
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(errors="replace")
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parent.parent  # film01/
 BASE = os.environ.get("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3").rstrip("/")
 TASKS = BASE + "/contents/generations/tasks"
@@ -65,7 +72,7 @@ def update_log(path, data):
 
 
 def load_prices():
-    return json.loads((ROOT / "tools" / "prices.json").read_text(encoding="utf-8"))
+    return json.loads((ROOT / "tools" / "prices.json").read_text(encoding="utf-8-sig"))
 
 
 def ratio_value(r):
@@ -99,7 +106,7 @@ def build(spec_path):
     spec_path = rel(spec_path)
     if not spec_path.exists():
         die(f"镜头参数文件不存在: {spec_path}")
-    spec = json.loads(spec_path.read_text(encoding="utf-8"))
+    spec = json.loads(spec_path.read_text(encoding="utf-8-sig"))
     clip = spec.get("clip")
     if clip != spec_path.stem:
         die(f"clip 字段 {clip!r} 必须和文件名 {spec_path.stem!r} 一致")
@@ -115,7 +122,7 @@ def build(spec_path):
     if not isinstance(dur, int) or not 4 <= dur <= 30:
         die(f"duration 必须是 4 到 30 之间的整数，现在是 {dur!r}")
 
-    prompt = rel(spec["prompt_file"]).read_text(encoding="utf-8").strip()
+    prompt = rel(spec["prompt_file"]).read_text(encoding="utf-8-sig").replace("\r\n", "\n").strip()
     if not prompt:
         die("视频提示词为空")
 
@@ -176,7 +183,7 @@ def cmd_plan(a):
     clip, body, plan = build(a.spec)
     out = ROOT / "requests" / f"{clip}.plan.json"
     if out.exists():
-        old = json.loads(out.read_text(encoding="utf-8"))
+        old = json.loads(out.read_text(encoding="utf-8-sig"))
         if old["payload_sha256"] != plan["payload_sha256"]:
             die(f"{out.name} 已存在但输入变了（提示词、图片或参数被改过）。请导演开新版本号，不覆盖旧报价。")
         print(f"{out.name} 已存在，输入没变。")
@@ -235,7 +242,7 @@ def stop_billing(clip, http, code, msg):
 
 def cmd_submit(a):
     if STOP.exists():
-        die(f"{STOP.name} 存在，禁止提交:\n{STOP.read_text(encoding='utf-8')}", 3)
+        die(f"{STOP.name} 存在，禁止提交:\n{STOP.read_text(encoding='utf-8-sig')}", 3)
     clip, body, plan = build(a.spec)
     log = ROOT / "logs" / "api" / f"{clip}.json"
     if log.exists():
@@ -243,12 +250,12 @@ def cmd_submit(a):
     pf = ROOT / "requests" / f"{clip}.plan.json"
     if not pf.exists():
         die("没有报价单，请先运行 plan")
-    if json.loads(pf.read_text(encoding="utf-8"))["payload_sha256"] != plan["payload_sha256"]:
+    if json.loads(pf.read_text(encoding="utf-8-sig"))["payload_sha256"] != plan["payload_sha256"]:
         die("当前输入和报价单的指纹不一致，输入被改过，禁止提交")
     af = ROOT / "approvals" / f"{clip}.json"
     if not af.exists():
         die(f"没有用户批准单 {af.relative_to(ROOT)}，禁止提交")
-    ap = json.loads(af.read_text(encoding="utf-8"))
+    ap = json.loads(af.read_text(encoding="utf-8-sig"))
     if ap.get("payload_sha256") != plan["payload_sha256"]:
         die("批准单上的指纹和当前请求不一致，禁止提交")
     if float(ap.get("max_cny", 0)) < plan["estimate_cny"]:
@@ -283,7 +290,7 @@ def cmd_poll(a):
     log = ROOT / "logs" / "api" / f"{a.clip}.json"
     if not log.exists():
         die(f"没有 {a.clip} 的提交记录")
-    rec = json.loads(log.read_text(encoding="utf-8"))
+    rec = json.loads(log.read_text(encoding="utf-8-sig"))
     tid = rec.get("task_id")
     if not tid:
         die(f"{a.clip} 没有 task_id（状态 {rec.get('state')}），无法查询")
@@ -340,7 +347,8 @@ def cmd_poll(a):
     except Exception as e:
         die(f"下载失败（链接约 24 小时内有效，可以再运行 poll）：{e!r}\n视频所在域名: {rec['video_host']}", 2)
     chk = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
-                          "stream=codec_type", "-of", "csv=p=0", str(tmp)], capture_output=True, text=True)
+                          "stream=codec_type", "-of", "csv=p=0", str(tmp)], capture_output=True, text=True,
+                         encoding="utf-8", errors="replace")
     if chk.returncode != 0 or "video" not in chk.stdout:
         bad = tmp.with_name(f"{a.clip}.download_{int(time.time())}.bad")
         tmp.rename(bad)

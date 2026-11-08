@@ -11,6 +11,13 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# Windows 控制台或管道可能是 GBK 编码：遇到无法显示的字符就替换，不让脚本崩溃
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(errors="replace")
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -26,7 +33,7 @@ def main():
         sys.exit(f"没有报价单 {plan_f}")
     if out.exists():
         sys.exit(f"{out} 已存在。重拍要用新版本号。")
-    plan = json.loads(plan_f.read_text(encoding="utf-8"))
+    plan = json.loads(plan_f.read_text(encoding="utf-8-sig"))
     p = plan["preview"]
     print(f"\n镜头     : {clip}")
     print(f"模型     : {p['model']}")

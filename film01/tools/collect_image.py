@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""把 Codex 刚画好的图归档进 film01/images/，版本号自动递增，不覆盖。
+r"""把 Codex 刚画好的图归档进 film01/images/，版本号自动递增，不覆盖。
 
+  python film01/tools/collect_image.py --stamp          # 画图前运行，打印当前时间戳
   python film01/tools/collect_image.py --name S03_first --since 1731050000 \
       --prompt prompts/S03_first_v1.txt --refs images/CHAR_a_v1.png --job JOB-0005
 
-在 ~/.codex/generated_images/（或 $CODEX_HOME/generated_images/）下找修改时间晚于 --since 的图片：
+在 Codex 生图目录（$CODEX_HOME/generated_images，默认是用户目录下的 .codex/generated_images；
+Windows 上是 %USERPROFILE%\.codex\generated_images）下找修改时间晚于 --since 的图片：
 正好 1 张就归档；0 张或多张就报错并列出来，不自己挑（多张时可以用 --source 指定）。
 """
 import argparse
@@ -14,8 +16,16 @@ import os
 import re
 import shutil
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
+
+# Windows 控制台或管道可能是 GBK 编码：遇到无法显示的字符就替换，不让脚本崩溃
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(errors="replace")
+    except Exception:
+        pass
 
 ROOT = Path(__file__).resolve().parent.parent
 EXTS = {".png", ".jpg", ".jpeg", ".webp"}
@@ -32,13 +42,19 @@ def rel(p):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--name", required=True, help="输出名，例如 S03_first（不带版本号）")
-    ap.add_argument("--since", type=float, required=True, help="开始画图前的 date +%%s")
-    ap.add_argument("--prompt", required=True)
+    ap.add_argument("--stamp", action="store_true", help="只打印当前时间戳，画图前运行")
+    ap.add_argument("--name", help="输出名，例如 S03_first（不带版本号）")
+    ap.add_argument("--since", type=float, help="画图前 --stamp 打印的数字")
+    ap.add_argument("--prompt")
     ap.add_argument("--refs", nargs="*", default=[])
     ap.add_argument("--job", default="")
     ap.add_argument("--source", help="多张候选时，明确指定其中一张")
     a = ap.parse_args()
+    if a.stamp:
+        print(int(time.time()))
+        return
+    if not (a.name and a.since is not None and a.prompt):
+        ap.error("归档时必须同时给出 --name、--since 和 --prompt")
 
     if not re.fullmatch(r"[A-Za-z0-9_\-]+", a.name) or re.search(r"_v\d+$", a.name):
         sys.exit("--name 只能包含字母、数字、下划线和连字符，且不要自带 _v 版本号")
@@ -62,7 +78,7 @@ def main():
     src_sha = hashlib.sha256(src.read_bytes()).hexdigest()
     for side in (ROOT / "images").glob("*.json"):
         try:
-            if json.loads(side.read_text(encoding="utf-8")).get("sha256") == src_sha:
+            if json.loads(side.read_text(encoding="utf-8-sig")).get("sha256") == src_sha:
                 sys.exit(f"这张图已经归档过了：{side.with_suffix('').name}（来源 {src}），不重复归档")
         except ValueError:
             pass
@@ -88,7 +104,7 @@ def main():
         "version": n,
         "size": f"{w}x{h}",
         "sha256": hashlib.sha256(raw).hexdigest(),
-        "source": str(src),
+        "source": (str(src.relative_to(gen.parent)) if src.is_relative_to(gen.parent) else src.name),
         "codex_session_dir": src.parent.name,
         "prompt_file": str(prompt_p.relative_to(ROOT)),
         "prompt_sha256": hashlib.sha256(prompt_p.read_bytes()).hexdigest(),

@@ -1,0 +1,8 @@
+# 统一用 LF：Windows 换行符会改变提示词，导致请求指纹对不上
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.mp3 binary
+*.wav binary

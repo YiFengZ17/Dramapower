@@ -16,11 +16,18 @@ import subprocess
 import sys
 from pathlib import Path
 
+# Windows 控制台或管道可能是 GBK 编码：遇到无法显示的字符就替换，不让脚本崩溃
+for _s in (sys.stdout, sys.stderr):
+    try:
+        _s.reconfigure(errors="replace")
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
 def run(cmd):
-    r = subprocess.run(cmd, capture_output=True, text=True)
+    r = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace")
     if r.returncode != 0:
         sys.exit(f"命令失败: {' '.join(cmd)}\n{r.stderr[-2000:]}")
     return r.stdout
@@ -90,7 +97,7 @@ def main():
     spec_f = ROOT / "shots" / f"{a.clip}.json"
     match = {}
     if spec_f.exists():
-        spec = json.loads(spec_f.read_text(encoding="utf-8"))
+        spec = json.loads(spec_f.read_text(encoding="utf-8-sig"))
         for key, fr in (("first_frame", frames[0]), ("last_frame", frames[-1])):
             if spec.get(key) and rel(spec[key]).exists():
                 with Image.open(rel(spec[key])) as ref:

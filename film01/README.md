@@ -4,12 +4,12 @@
 
 ## 分工
 - 导演（云端 Claude）：故事（`story/`）、分镜、提示词、脚本、审片
-- Codex（用户本地 WSL）：画图、运行脚本、推送结果。规则见 `codex-skill/film-crew/SKILL.md`
+- Codex（用户本地 Windows，项目在 D 盘）：画图、运行脚本、推送结果。规则见 `codex-skill/film-crew/SKILL.md`
 - 用户：选方向、确认画风、批准花钱（`approve.py`）、看动态、听声音
 
 ## 一轮交接
 1. 导演推送工单 `jobs/JOB-xxxx.md`（以及要用的提示词、镜头参数）
-2. 用户在 WSL 里对 Codex 说“执行工单”
+2. 用户在本地对 Codex 说“执行工单”
 3. Codex 拉取 → 执行 → 写 `reports/JOB-xxxx.md` → 推送
 4. 用户告诉导演“推了”，导演拉取后检查
 

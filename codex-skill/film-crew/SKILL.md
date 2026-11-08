@@ -8,14 +8,17 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 这个短片项目有三方：
 
 - **导演**：云端的 Claude。负责故事、分镜、全部提示词、全部脚本，以及所有审片判断。它看不到你的电脑，只能通过 GitHub 仓库和你交接。
-- **你（Codex）**：在用户的 WSL 里干活。你是画师，也是执行者：按工单画图、运行导演的脚本、把结果推回仓库。
+- **你（Codex）**：在用户的 Windows 电脑上干活（项目在 D 盘）。你是画师，也是执行者：按工单画图、运行导演的脚本、把结果推回仓库。
 - **用户**：选方向、批准花钱、看动态、听声音。
 
 你**不做导演的决定**：不改故事，不改提示词，不改导演的脚本，不判断画面能不能用，不自行重画或重拍。看到问题就写进报告，由导演决定怎么办。
 
 ## 工作目录
 
-- 仓库根目录（下文用 `<repo>` 表示）就是用户在 WSL 里 clone 的 Dramapower。
+- 仓库根目录（下文用 `<repo>` 表示）是用户 D 盘上 clone 的 Dramapower，通常是 `D:\Dramapower`（如果你在 WSL 里运行，对应 `/mnt/d/Dramapower`）。
+- 所有命令都在 `<repo>` 下运行，路径一律写 `film01/...` 这种相对路径。
+- Python 命令用 `python`（Windows 上没有 `python` 时改用 `py`）。不要用 bash 特有的语法（`&&`、`|`、`<`、`grep`、`date`），下文给的命令在 PowerShell、cmd 和 bash 里都能运行。
+- Codex 画的图默认存在 `%USERPROFILE%\.codex\generated_images\<会话 id>\`（WSL 里是 `~/.codex/generated_images/`），设置了 `CODEX_HOME` 就在它下面。归档脚本会自己去找。
 - 项目文件夹是 `<repo>/film01/`。所有路径都相对于它，除非另行写明。
 - 工作分支：**只用 `main`**。不建分支，不切换分支。
 
@@ -34,8 +37,8 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 
 ## 每次开工
 
-1. `cd <repo> && git status`。工作区不干净就停下，告诉用户哪些文件有改动，不要自己清理。
-2. `git checkout main && git pull --ff-only origin main`。失败就停下报告，不要 merge 或强推。
+1. 进入 `<repo>`，运行 `git status`。工作区不干净就停下，告诉用户哪些文件有改动，不要自己清理。
+2. 依次运行 `git checkout main` 和 `git pull --ff-only origin main`。失败就停下报告，不要 merge 或强推。
 3. 找待办工单：`jobs/` 里那些在 `reports/` 下还没有同名报告的 `JOB-xxxx.md`。按编号从小到大执行。用户点名了某张工单就只做那张。
 4. 每张工单都从头到尾读完再动手。工单里有你不理解的地方、文件缺失、或者指令和本 skill 冲突，就不要猜：写一份状态为“阻塞”的报告，说明原因。
 
@@ -47,7 +50,7 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 
 一张工单可能要画好几张图，每张都会给出：输出名（例如 `S03_first`）、提示词文件、参考图列表。每张图的做法如下：
 
-1. 记下开始时间：`date +%s`。
+1. 记下开始时间：`python film01/tools/collect_image.py --stamp`，它会打印一个数字。
 2. 把提示词文件**原文**作为生图指令，**不增、不删、不润色**。
 3. 有参考图就先逐张查看（用你查看本地图片的工具），再生成。
 4. 用你自己的生图工具生成**正好一张**图。
@@ -59,9 +62,10 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 6. 如果生图工具改写了提示词，或者拒绝生成，就把实际使用的文字或拒绝原因原样写进报告。
 
 工单写了 `方式: exec` 时，不用你自己的生图工具，改为原样执行这条命令（有多张参考图就写多个 `-i`）：
-```bash
-codex exec --skip-git-repo-check -s read-only -i <参考图.png> - < <提示词文件>
+```bat
+cmd /c "codex exec --skip-git-repo-check -s read-only -i <参考图.png> - < <提示词文件>"
 ```
+在 WSL 或 Git Bash 里可以去掉 `cmd /c` 和外层引号直接运行。不要在 PowerShell 里用 `Get-Content | codex` 传提示词，中文可能变成问号。
 然后照样用 `collect_image.py` 归档。
 
 每张图**只画一次**。就算你觉得画得不好，也不要重画，把你看到的问题写进报告就行。工单明确写了“每张画 N 次”的，才画 N 次。
@@ -134,10 +138,10 @@ Codex 会话 id: <如果知道>
 
 ## 收尾：提交并推送
 
-```bash
+```
 git add film01/reports film01/images film01/requests film01/logs film01/video_check
-git status --short           # 检查一遍：不应该出现 mp4、.env 或其他视频文件
-git diff --cached --name-only | grep -Ei '\.(mp4|mov|mkv|webm)$|\.env' && echo "有不该提交的文件，停止"
+python film01/tools/precommit_check.py
+# 上一步报错就停下，不要提交
 git commit -m "JOB-xxxx: <一句话说明>"
 git push origin main
 ```
