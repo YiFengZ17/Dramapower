@@ -1,0 +1,16 @@
+{
+  "file": "images/CHAR_fish_sheet_v1.png",
+  "version": 1,
+  "size": "1774x887",
+  "sha256": "7e9189a35e7a27b2beff16f3fab730c3e57be1e24dca8bf3d0b3020faa445c11",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-fc4dcf16-014a-4048-a884-c12d88a8cc8b.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/CHAR_fish_sheet_v1.txt",
+  "prompt_sha256": "f8e19115db0f44598e0aee7ee50df15773f10da0fa281bfdb4fe4c10a5d085e3",
+  "refs": [
+    "film01/refs/REF_fish_E_x3_v1.png",
+    "film01/images/STYLE_a_v1_16x9.png"
+  ],
+  "job": "JOB-0004",
+  "collected_at": "2026-11-08T21:12:13+08:00"
+}

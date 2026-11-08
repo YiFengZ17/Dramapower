@@ -1,0 +1,15 @@
+{
+  "file": "images/SCENE_study_sheet_v1.png",
+  "version": 1,
+  "size": "1672x940",
+  "sha256": "ce3b78caf5ac7a9a4d669a08907fe9b450bca5edb6eeffa36604f899e2954ef6",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-2d1b32bb-b47b-4e92-bce2-f4a7294fee27.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/SCENE_study_sheet_v1.txt",
+  "prompt_sha256": "dd2ffead808e06d8a3c936316be350c97fa05a5c7f3fb9be1219058558a65118",
+  "refs": [
+    "film01/images/STYLE_a_v1_16x9.png"
+  ],
+  "job": "JOB-0004",
+  "collected_at": "2026-11-08T21:13:38+08:00"
+}
