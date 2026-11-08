@@ -1,0 +1,52 @@
+{
+  "clip": "S02_v3",
+  "payload_sha256": "92e0e3028ef60af1e118b1146c9bc9ee14c452bd999b67a1cc447c536dcfcf85",
+  "estimate_cny": 0.9,
+  "estimate_tokens": 38880,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 214,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S02_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "15bd48e3b12da8a3eab9a5b885918bdebe9d0eb424e949172f5f1491cd42a23e"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S02_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "58923a7ae360f8bd942c240d609ee516f0086968c1c3eaa46635895927c95799"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位，透过门缝看。少女把勺子里满满的一大口白米饭一口塞进嘴里，抽出空勺，腮帮子一下子鼓起来像仓鼠，开心地眯起眼睛咀嚼，脸颊泛红，脸上粘着几粒饭粒。她的鲸鱼尾巴从椅座前开心地向上甩起，绕到身后画面左侧，沿着椅背旁翘起，尾鳍高过扶手。另一只手一直放在键盘上。碗里堆得高高的米饭明显变矮变平。动作可爱、有弹性。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S02_first_v1_16x9.png sha256=15bd48e3b12d>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S02_last_v1_16x9.png sha256=58923a7ae360>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T14:12:01+00:00"
+}
