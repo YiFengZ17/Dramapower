@@ -1,0 +1,33 @@
+{
+  "clip": "S02_v3",
+  "payload_sha256": "92e0e3028ef60af1e118b1146c9bc9ee14c452bd999b67a1cc447c536dcfcf85",
+  "estimate_cny": 0.94,
+  "state": "submitted",
+  "submitted_at": "2026-11-08T23:24:41+08:00",
+  "history": [
+    {
+      "at": "2026-11-08T23:26:59+08:00",
+      "status": "succeeded"
+    }
+  ],
+  "task_id": "cgt-20261108232442-116zk",
+  "status": "succeeded",
+  "usage": {
+    "completion_tokens": 40594,
+    "total_tokens": 40594
+  },
+  "result": {
+    "seed": 96600,
+    "resolution": "480p",
+    "ratio": "16:9",
+    "duration": 4,
+    "framespersecond": 24
+  },
+  "video_host": "ark-acg-cn-beijing.tos-cn-beijing.volces.com",
+  "video": {
+    "file": "video/S02_v3.mp4",
+    "bytes": 1414208,
+    "sha256": "bc50ffb74d6737f669a435a28c521b2240635893e65d35c44baea9d823954a01",
+    "downloaded_at": "2026-11-08T23:27:00+08:00"
+  }
+}
