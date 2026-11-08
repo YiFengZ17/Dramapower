@@ -1,0 +1,52 @@
+{
+  "clip": "S05_v2",
+  "payload_sha256": "ae2d7159b4339806f19643622cd23b616a6fc3502da2a530a93dc31e05b1e33d",
+  "estimate_cny": 1.12,
+  "estimate_tokens": 48600,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 230,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S05_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "75bd0adc13ef8c67bb5af6d93c287214b0026c802ab034142c345b33cc1cd608"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S05_last_v3_16x9.png",
+      "size": "1672x940",
+      "sha256": "dad371a8b92de8dfb7094696d305afac34f35cd52fe011362571975ed8047e80"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位。少女慌张地挥着双手，空中的勺子飞出画面。她的手一推，桌上的巨大饭碗翻了个跟头飞起来；转椅向画面左侧一歪，她顺着椅子滑坐到地毯上；饭碗在空中翻转，碗口朝下，结结实实扣在她头上，满满的米饭从碗沿压下来，滑落到头发和肩膀上。她愣住不动。尾巴留在画面左侧，跟着身体落到地毯上。动作有重量感，喜剧节奏；背景、门口的暖光和地上的人影保持不动。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S05_first_v1_16x9.png sha256=75bd0adc13ef>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S05_last_v3_16x9.png sha256=dad371a8b92d>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 5,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T22:41:10+08:00"
+}
