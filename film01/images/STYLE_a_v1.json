@@ -1,0 +1,15 @@
+{
+  "file": "images\\STYLE_a_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "748792763f4fcbc8199c10e69affb720f66a8d58145f33967dba0bbe01383a83",
+  "source": "generated_images\\01a1bae7-f90e-7f60-bdcd-46b5a60aacb0\\exec-8f58f640-a73c-487f-9111-9f70f887705b.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts\\STYLE_a_v2.txt",
+  "prompt_sha256": "fc8a73704b409a43898957c636bc5e823835c370633e00e3c01b248575f5aac6",
+  "refs": [
+    "film01/refs/REF_fish_E_x3_v1.png"
+  ],
+  "job": "JOB-0003",
+  "collected_at": "2026-11-08T20:54:51+08:00"
+}

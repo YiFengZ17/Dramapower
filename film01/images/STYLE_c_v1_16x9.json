@@ -1,0 +1,15 @@
+{
+  "file": "images\\STYLE_c_v1_16x9.png",
+  "from": "images\\STYLE_c_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "e78b7b692a918168a3838adf00fed7cd64db5424d6068baa8ad456c1dc40fe5f",
+  "made_at": "2026-11-08T20:57:14+08:00"
+}
