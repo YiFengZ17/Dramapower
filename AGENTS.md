@@ -6,7 +6,7 @@
 - 项目文件夹：`film01/`。工单在 `film01/jobs/`，报告写到 `film01/reports/`。
 
 即使没有加载 skill，下面这几条也必须遵守：
-1. 不修改 `film01/jobs/`、`film01/prompts/`、`film01/shots/`、`film01/tools/`。
+1. 不修改 `film01/jobs/`、`film01/prompts/`、`film01/shots/`、`film01/tools/`、`film01/story/`、`film01/refs/`。
 2. 不碰 `film01/approvals/`，不运行 `approve.py`，不删除 `film01/STOP_BILLING`。
 3. 不提交视频文件和密钥，不打印 `ARK_API_KEY`。
 4. 不覆盖、不删除已有产出；新版本存新文件。

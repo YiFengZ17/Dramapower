@@ -28,6 +28,7 @@ description: 短片项目的画师兼执行者。在 Dramapower 仓库的 film01
 | `prompts/` | 导演 | 图像和视频提示词。你只读 |
 | `shots/` | 导演 | 视频镜头参数 `<clip>.json`。你只读 |
 | `tools/` | 导演 | 脚本。你只运行，不修改 |
+| `story/` `refs/` | 导演 | 故事、分镜、参考图。你只读 |
 | `approvals/` | **只有用户** | 花钱批准单。你**绝不**创建、修改或删除 |
 | `images/` | 你（通过脚本） | 画好的图和旁边的说明 json |
 | `requests/` `logs/api/` | 你（通过脚本） | 请求预览、报价、任务记录 |
