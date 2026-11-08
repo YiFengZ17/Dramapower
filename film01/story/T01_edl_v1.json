@@ -1,0 +1,16 @@
+{
+  "name": "T01_cut_v1",
+  "_note": "入点和出点是看到真实片段之前的初稿，导演看过每段的抽帧后再改成 v2。目标总长 15 秒。",
+  "size": [864, 480],
+  "fps": 24,
+  "fade_in": 0.3,
+  "fade_out": 0.5,
+  "segments": [
+    {"shot": "S01", "src": "video/S01_v1.mp4", "in": 1.0, "out": 3.5},
+    {"shot": "S02", "src": "video/S02_v1.mp4", "in": 0.5, "out": 3.5},
+    {"shot": "S03", "src": "video/S03_insert_v1.mp4", "in": 0.3, "out": 2.8},
+    {"shot": "S04", "src": "video/S04_v1.mp4", "in": 1.5, "out": 3.5},
+    {"shot": "S05", "src": "video/S05_v1.mp4", "in": 0.8, "out": 3.3},
+    {"shot": "S06", "src": "video/S06_v1.mp4", "in": 0.8, "out": 3.3}
+  ]
+}
