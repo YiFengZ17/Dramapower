@@ -1,0 +1,5 @@
+Edit the attached first-frame image. Keep the camera position, framing, room, lighting, colors, art style and the character design exactly the same. Change only the following:
+
+The office chair is tipping over sideways toward screen left at a steep angle, and the girl is tumbling off it toward the floor, arms, legs and tail flailing in the air. Above her, the gigantic rice bowl has flipped upside down in mid-air, and a big cloud of white rice grains scatters through the air. Nothing else changes.
+
+Composition: a 16:9 landscape image that fills the whole frame edge to edge, with no borders, frames, letterboxing or white margins. No motion blur. No text, letters, numbers, logos or watermark anywhere; the monitor screen shows only blurry abstract colored shapes.

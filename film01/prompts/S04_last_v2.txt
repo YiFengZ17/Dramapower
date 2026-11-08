@@ -1,0 +1,5 @@
+Edit the attached first-frame image. Keep the camera position, framing, room, lighting, colors, art style and the character design exactly the same. Change only the following:
+
+The door is now fully open and out of frame. A bright wedge of warm hallway light covers the floor and the girl, and the long dark shadow of a person (only the shadow; no person is visible) falls across the floor and over her. She has turned her head back over her right shoulder toward the viewer and is frozen: eyes wide open in shock with tiny pupils, the spoon still sticking out of her puffed mouth, a drop of sweat on her temple, her fin ears raised stiffly, her tail stiff and straight. Nothing else changes.
+
+Composition: a 16:9 landscape image that fills the whole frame edge to edge, with no borders, frames, letterboxing or white margins. No motion blur. No text, letters, numbers, logos or watermark anywhere; the monitor screen shows only blurry abstract colored shapes.

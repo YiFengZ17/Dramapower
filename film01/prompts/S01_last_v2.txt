@@ -1,0 +1,5 @@
+Edit the attached first-frame image. Keep the camera position, framing, room, lighting, colors, art style and the character design exactly the same. Change only the following:
+
+The camera has moved much closer to the door gap: the gap now fills the middle half of the image, the door edges are blurry dark shapes at the far left and right, and the girl and the gigantic rice bowl appear about twice as large. Nothing else changes.
+
+Composition: a 16:9 landscape image that fills the whole frame edge to edge, with no borders, frames, letterboxing or white margins. No motion blur. No text, letters, numbers, logos or watermark anywhere; the monitor screen shows only blurry abstract colored shapes.
