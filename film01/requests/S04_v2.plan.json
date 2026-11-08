@@ -1,0 +1,52 @@
+{
+  "clip": "S04_v2",
+  "payload_sha256": "ff8e9de36b9057d5541abcba3b306e32df108085e2ef8d0d8ed2360d862581ee",
+  "estimate_cny": 0.9,
+  "estimate_tokens": 38880,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 228,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S04_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "f38fa9b1051bc51ce7d871035f3b278bb2aaca83bf3d9ce483ee4bdf5df3439f"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S04_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "a4727590375db942ed3a93dbc383a2d07ad48df56ee721d7cb142544142f3f05"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位，从门口看进房间。房门向里缓缓打开，画面左边的门板移出画面；走廊的暖光铺满地面，照亮少女和椅背；一个人的长影子投在她身后的地板上（画面里不出现这个人，只有影子）；桌面和饭碗上出现门框投下的斜影。少女嘴里叼着勺子、鼓着腮帮，身体一下子僵住，然后慢慢从右肩转过头和上半身看向镜头，眼睛瞪圆，鳍状耳朵竖起来，尾巴绷直，额头冒出一滴汗。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S04_first_v1_16x9.png sha256=f38fa9b1051b>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S04_last_v1_16x9.png sha256=a4727590375d>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-08T14:10:31+00:00"
+}
