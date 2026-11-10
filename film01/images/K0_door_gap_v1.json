@@ -1,0 +1,15 @@
+{
+  "file": "images/K0_door_gap_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "ca9274797b1e1ec764dcc6b0f787681f35a7e600d48672a8384acd07468d82ca",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-9d7a9e76-82aa-44a1-a8c5-2b7fff60d8ad.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/K0_door_gap_v1.txt",
+  "prompt_sha256": "814345fa11a5962dd1a56bdab7f1016f5f60f192c35cc6a95c6f69d2a2d779c9",
+  "refs": [
+    "film01/images/K1_typing_v2_16x9.png"
+  ],
+  "job": "JOB-0010",
+  "collected_at": "2026-11-10T15:49:12+08:00"
+}

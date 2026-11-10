@@ -1,0 +1,52 @@
+{
+  "clip": "S06_v3",
+  "video_file_local_only": "D:\\Dramapower\\film01\\video\\S06_v3.mp4",
+  "duration_s": 4.041667,
+  "size": "864x496",
+  "fps": 24.0,
+  "frames": 97,
+  "codec": "h264",
+  "has_audio": false,
+  "audio_codec": null,
+  "bytes": 1147664,
+  "sampled_frames": [
+    "f00_n0000.jpg",
+    "f01_n0014.jpg",
+    "f02_n0027.jpg",
+    "f03_n0041.jpg",
+    "f04_n0055.jpg",
+    "f05_n0069.jpg",
+    "f06_n0082.jpg",
+    "f07_n0096.jpg"
+  ],
+  "mean_luma": [
+    90.5,
+    89.4,
+    89.0,
+    88.7,
+    88.9,
+    89.3,
+    89.2,
+    89.6
+  ],
+  "diff_between_samples": [
+    13.9,
+    13.8,
+    11.9,
+    1.6,
+    1.7,
+    0.8,
+    5.4
+  ],
+  "match_with_keyframes": {
+    "first_frame": {
+      "file": "images/K4_bowl_head_v1_16x9.png",
+      "mean_abs_diff": 8.0
+    },
+    "last_frame": {
+      "file": "images/K5_bowl_cover_v1_16x9.png",
+      "mean_abs_diff": 7.2
+    }
+  },
+  "note": "mean_abs_diff 范围 0–255，越小越接近原图；只是粗略指标，导演还要看图。"
+}

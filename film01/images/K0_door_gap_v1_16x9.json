@@ -1,0 +1,15 @@
+{
+  "file": "images/K0_door_gap_v1_16x9.png",
+  "from": "images/K0_door_gap_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "08b108c5303bf776fd0134c1dc5f8b3360cd87891e6370a621409325f8733597",
+  "made_at": "2026-11-10T15:49:13+08:00"
+}
