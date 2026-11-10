@@ -1,0 +1,16 @@
+{
+  "file": "images/K5_bowl_cover_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "c3094715df9a05af4312362bc6e3f9be4c3d4b6d8ccb6c67a6a336c7e392a1f9",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-0c0c3f64-be96-4b78-a5c9-0de2cd8cd1f9.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/K5_bowl_cover_v1.txt",
+  "prompt_sha256": "68cac35d9f41c7e1ee61fd1c3b5af8dd216f01160f02ab4b23c6024d34841723",
+  "refs": [
+    "film01/images/K4_bowl_head_v1.png",
+    "film01/images/CHAR_fish_sheet_v1.png"
+  ],
+  "job": "JOB-0009",
+  "collected_at": "2026-11-10T15:10:16+08:00"
+}

@@ -1,0 +1,15 @@
+{
+  "file": "images/K4_bowl_head_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "37039c444ebf14716251fa68728bf3ec81fcc6de8801ee3f309156515c333228",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-f68b2690-78bb-4324-aab7-9d20d8db92c0.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/K4_bowl_head_v1.txt",
+  "prompt_sha256": "8e3e40e40edb3212a247e69566805b2a40681ba5653ef9747a385acb27fb8803",
+  "refs": [
+    "film01/images/S05_last_v3.png"
+  ],
+  "job": "JOB-0009",
+  "collected_at": "2026-11-10T15:07:08+08:00"
+}

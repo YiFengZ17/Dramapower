@@ -1,0 +1,16 @@
+{
+  "file": "images/K1_typing_v1.png",
+  "version": 1,
+  "size": "1672x941",
+  "sha256": "3aecf101a7e6e2570c19d83fe8284f3427e81fbc3d656c6934111c9cba89066f",
+  "source": "generated_images/01a1bae7-f90e-7f60-bdcd-46b5a60aacb0/exec-bdfcf627-d8d2-4c43-81a9-183ad396a7c0.png",
+  "codex_session_dir": "01a1bae7-f90e-7f60-bdcd-46b5a60aacb0",
+  "prompt_file": "prompts/K1_typing_v1.txt",
+  "prompt_sha256": "fd5fce9115bc9c626163ca60c80c4b258d7017708b0e9ba89bf66b32934f4bcf",
+  "refs": [
+    "film01/images/S04_first_v1.png",
+    "film01/images/CHAR_fish_sheet_v1.png"
+  ],
+  "job": "JOB-0009",
+  "collected_at": "2026-11-10T15:04:07+08:00"
+}

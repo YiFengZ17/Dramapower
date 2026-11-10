@@ -1,0 +1,15 @@
+{
+  "file": "images/K1_typing_v1_16x9.png",
+  "from": "images/K1_typing_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "d5e967ccd49df4d04871800fe8b03f4e7e444ea0b4d071fc61828e8b3c414223",
+  "made_at": "2026-11-10T15:04:08+08:00"
+}

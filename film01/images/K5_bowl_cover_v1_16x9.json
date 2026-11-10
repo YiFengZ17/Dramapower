@@ -1,0 +1,15 @@
+{
+  "file": "images/K5_bowl_cover_v1_16x9.png",
+  "from": "images/K5_bowl_cover_v1.png",
+  "from_size": "1672x941",
+  "size": "1672x940",
+  "crop_box": [
+    0,
+    0,
+    1672,
+    940
+  ],
+  "ratio": "16:9",
+  "sha256": "e84706810bae8eea580005c1153e7e3c22063143ab6d325f8b9bd09705499353",
+  "made_at": "2026-11-10T15:10:17+08:00"
+}
