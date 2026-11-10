@@ -1,0 +1,52 @@
+{
+  "clip": "S01_v3",
+  "payload_sha256": "905293366d33412244ca7db339d0651a640e53acace966e4cc5c024cc769d126",
+  "estimate_cny": 0.94,
+  "estimate_tokens": 40594,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 203,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S01_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "fd71cf5078907ba096dd2f3c4f4288578fc260950cc02467e2be61d65ca26168"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/K1_typing_v2_16x9.png",
+      "size": "1672x940",
+      "sha256": "2367df9423dd20654435ad81bcf7c5eaff1e1639e11bc95431ccd54cc792de17"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "镜头从昏暗走廊的门缝外，缓慢平稳地向前推近；门被轻轻推开一些，门缝变宽：画面右侧的门框移出画面，左侧的门板退到画面最左边。房间里，少女坐在大黑转椅上，背对镜头专心敲键盘，旁边是装满米饭的巨大饭碗，勺子插在饭里；她的尾巴在椅子边轻轻摆动。走廊的暖光从门口斜照到地板上。人物和房间都不变形。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S01_first_v1_16x9.png sha256=fd71cf507890>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K1_typing_v2_16x9.png sha256=2367df9423dd>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-10T07:16:43+00:00"
+}

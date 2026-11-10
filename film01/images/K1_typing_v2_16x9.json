@@ -1,0 +1,18 @@
+{
+  "file": "images/K1_typing_v2_16x9.png",
+  "derived_from": "images/K1_typing_v1_16x9.png",
+  "donor": "images/S04_first_v1_16x9.png",
+  "box": [
+    670,
+    270,
+    790,
+    360
+  ],
+  "color_mask": "bow",
+  "masked_pixels": 1176,
+  "note": "K1 多出一个蓝色蝴蝶结（K0、K2 都没有），用 K2 同位置像素替换，避免视频里蝴蝶结闪现",
+  "made_by": "director (patch_region.py)",
+  "size": "1672x940",
+  "sha256": "2367df9423dd20654435ad81bcf7c5eaff1e1639e11bc95431ccd54cc792de17",
+  "made_at": "2026-11-10T07:16:34+00:00"
+}

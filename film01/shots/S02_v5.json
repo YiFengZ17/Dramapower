@@ -1,0 +1,12 @@
+{
+  "clip": "S02_v5",
+  "model": "doubao-seedance-2-0-mini-260615",
+  "prompt_file": "prompts/S02_video_v4.txt",
+  "first_frame": "images/K1_typing_v2_16x9.png",
+  "last_frame": "images/S04_first_v1_16x9.png",
+  "duration": 4,
+  "ratio": "16:9",
+  "resolution": "480p",
+  "generate_audio": false,
+  "watermark": false
+}
