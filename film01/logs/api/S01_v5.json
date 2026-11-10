@@ -1,0 +1,53 @@
+{
+  "clip": "S01_v5",
+  "payload_sha256": "72337f564f8b99c6315f7c67ddf025e43cbbbe6329f33c9fe3f1bf729f3fe07c",
+  "estimate_cny": 0.94,
+  "state": "submitted",
+  "submitted_at": "2026-11-10T16:14:32+08:00",
+  "history": [
+    {
+      "at": "2026-11-10T16:14:46+08:00",
+      "status": "running"
+    },
+    {
+      "at": "2026-11-10T16:15:01+08:00",
+      "status": "running"
+    },
+    {
+      "at": "2026-11-10T16:15:16+08:00",
+      "status": "running"
+    },
+    {
+      "at": "2026-11-10T16:15:31+08:00",
+      "status": "running"
+    },
+    {
+      "at": "2026-11-10T16:15:47+08:00",
+      "status": "running"
+    },
+    {
+      "at": "2026-11-10T16:16:02+08:00",
+      "status": "succeeded"
+    }
+  ],
+  "task_id": "cgt-20261110161434-dy8n1",
+  "status": "succeeded",
+  "usage": {
+    "completion_tokens": 40594,
+    "total_tokens": 40594
+  },
+  "result": {
+    "seed": 96587,
+    "resolution": "480p",
+    "ratio": "16:9",
+    "duration": 4,
+    "framespersecond": 24
+  },
+  "video_host": "ark-acg-cn-beijing.tos-cn-beijing.volces.com",
+  "video": {
+    "file": "video/S01_v5.mp4",
+    "bytes": 1632590,
+    "sha256": "945e20b71fdad96d2243bfbf83cf882b21267d3f56a69ca4baf01965516fdf42",
+    "downloaded_at": "2026-11-10T16:16:02+08:00"
+  }
+}
