@@ -1,0 +1,52 @@
+{
+  "clip": "S01_v5",
+  "payload_sha256": "72337f564f8b99c6315f7c67ddf025e43cbbbe6329f33c9fe3f1bf729f3fe07c",
+  "estimate_cny": 0.94,
+  "estimate_tokens": 40594,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 256,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/K0_door_gap_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "08b108c5303bf776fd0134c1dc5f8b3360cd87891e6370a621409325f8733597"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/K1_typing_v2_16x9.png",
+      "size": "1672x940",
+      "sha256": "2367df9423dd20654435ad81bcf7c5eaff1e1639e11bc95431ccd54cc792de17"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "镜头从昏暗走廊的门缝外，缓慢平稳地向前推近；门被轻轻推开一些，门缝变宽，画面中不出现任何手：画面右侧的门框移出画面，左侧的门板连同门把手退到画面最左边。房间里，少女坐在大黑转椅上，侧背对着镜头专心敲键盘，旁边是装满米饭的巨大饭碗，勺子竖直插在饭里；她的尾巴在椅子边轻轻摆动。除了镜头推近、门打开、她敲键盘的手和轻摆的尾巴，房间里所有东西的位置都不变，人物和房间都不变形，人物大小比例保持不变。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K0_door_gap_v1_16x9.png sha256=08b108c5303b>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K1_typing_v2_16x9.png sha256=2367df9423dd>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-10T08:08:59+00:00"
+}
