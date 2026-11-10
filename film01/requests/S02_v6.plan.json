@@ -1,0 +1,52 @@
+{
+  "clip": "S02_v6",
+  "payload_sha256": "4d5c867f3509aa35d437dbbcaf5055d9655c931fe9b849115bec26934579240a",
+  "estimate_cny": 0.94,
+  "estimate_tokens": 40594,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 217,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/K1_typing_v2_16x9.png",
+      "size": "1672x940",
+      "sha256": "2367df9423dd20654435ad81bcf7c5eaff1e1639e11bc95431ccd54cc792de17"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/S04_first_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "f38fa9b1051bc51ce7d871035f3b278bb2aaca83bf3d9ce483ee4bdf5df3439f"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位，从门口看进房间。少女停下敲键盘，一只手偷偷拔起竖插在饭里的大勺子，舀起一大勺白米饭塞进嘴里，然后把勺子横叼在嘴里，腮帮子鼓起来像仓鼠，嘴边沾着几粒米，手放回键盘上继续假装打字。这些动作在前2.5秒内做完，之后她只是叼着勺子假装打字。尾巴开心地轻轻摆了一下，弯向画面左边。门、地上的暖光和整个房间保持不动。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K1_typing_v2_16x9.png sha256=2367df9423dd>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S04_first_v1_16x9.png sha256=f38fa9b1051b>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-10T07:23:29+00:00"
+}

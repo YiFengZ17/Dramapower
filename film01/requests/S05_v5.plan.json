@@ -1,0 +1,52 @@
+{
+  "clip": "S05_v5",
+  "payload_sha256": "922c892877679af54b427873e961f5915374542c1edf670c17871a71a343e6f3",
+  "estimate_cny": 1.17,
+  "estimate_tokens": 50638,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 361,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/S04_last_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "a4727590375db942ed3a93dbc383a2d07ad48df56ee721d7cb142544142f3f05"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/K4_bowl_head_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "370a6a3b129b3ecf40895a1b1d8608d5d2399c1e8d19a3ce3c28a166bd3af313"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位。被发现的少女吓得一哆嗦，叼着的勺子从嘴里掉下去，她在转椅上慌乱地扭身、挥手。转椅从她身下向画面左侧滑开、往后歪倒，她顺势滑坐到地毯上，双腿并拢伸向前方，裙摆始终盖住大腿。慌乱中她的手臂扫到桌上的巨大饭碗，饭碗向画面左边滑出桌子左沿，只翻半圈，碗口朝下，正好扣在她头上；饭碗低低地翻落，始终完整留在画面里，不高高飞起。一团团米饭从碗沿挤出来，盖住她的眼睛，落到她的肩膀、腿上和地毯上，盖住了围裙；她碗下的长发一直是蓝色的，米饭不能变成白色头发。尾巴落到地毯上。键盘被她碰得往桌子里侧滑了一点。最后约1秒她愣住不动，嘴巴张成小圆形。门口的暖光、地上的人影和书架、窗户、台灯、显示器、书桌保持不动。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/S04_last_v1_16x9.png sha256=a4727590375d>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K4_bowl_head_v1_16x9.png sha256=370a6a3b129b>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 5,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-10T07:23:29+00:00"
+}

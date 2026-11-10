@@ -1,0 +1,52 @@
+{
+  "clip": "S06_v3",
+  "payload_sha256": "4c7004093bef19585b5903adb01722de6e72df7cf3bdd8622927ee0d559bb1b6",
+  "estimate_cny": 0.94,
+  "estimate_tokens": 40594,
+  "cny_per_million_tokens": 23,
+  "price_note": "按 token 公式估算（见 prices.json），实际以火山方舟账单为准",
+  "prompt_chars": 251,
+  "images": [
+    {
+      "role": "first_frame",
+      "file": "images/K4_bowl_head_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "370a6a3b129b3ecf40895a1b1d8608d5d2399c1e8d19a3ce3c28a166bd3af313"
+    },
+    {
+      "role": "last_frame",
+      "file": "images/K5_bowl_cover_v1_16x9.png",
+      "size": "1672x940",
+      "sha256": "e84706810bae8eea580005c1153e7e3c22063143ab6d325f8b9bd09705499353"
+    }
+  ],
+  "preview": {
+    "model": "doubao-seedance-2-0-mini-260615",
+    "content": [
+      {
+        "type": "text",
+        "text": "固定机位。扣在少女头上的巨大饭碗慢慢往下滑、慢慢摆正，她缩起身子，被碗整个罩住，碗口贴到地毯上，像一个倒扣的白色圆顶；还是同一只白瓷碗，蓝色波浪花纹不变。一圈米饭团从碗沿下挤出来，落在地毯上。只有她的鲸鱼尾巴从碗沿左下方伸出来，先扑腾两下，然后软软地平躺在地毯上，一粒米饭落在尾鳍上；这些动作在前3秒内完成，之后不动。歪在左边的转椅、书桌、键盘、门口的暖光、人影和整个房间保持不动。\n\n保持角色设计、服装、房间布局和日系赛璐璐Q版动画画风与首尾帧完全一致，画面稳定不闪烁，不要出现任何文字、字幕或水印。"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K4_bowl_head_v1_16x9.png sha256=370a6a3b129b>"
+        },
+        "role": "first_frame"
+      },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "<images/K5_bowl_cover_v1_16x9.png sha256=e84706810bae>"
+        },
+        "role": "last_frame"
+      }
+    ],
+    "ratio": "16:9",
+    "duration": 4,
+    "resolution": "480p",
+    "generate_audio": false,
+    "watermark": false
+  },
+  "created": "2026-11-10T07:23:29+00:00"
+}
